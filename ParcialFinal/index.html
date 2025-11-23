@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>💳 Credit Scoring - Predicción de Riesgo</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💳 Sistema de Credit Scoring</h1>
+            <p class="subtitle">Predicción de Riesgo de Morosidad (90+ días)</p>
+        </header>
+
+        <div class="card">
+            <h2>📋 Ingresa los Datos del Solicitante</h2>
+            
+            <form id="creditForm">
+                <div class="form-group">
+                    <label for="utilization">Utilización de líneas de crédito (0-10):</label>
+                    <input type="number" id="utilization" step="0.01" min="0" max="10" value="0.2" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="age">Edad (18-120):</label>
+                    <input type="number" id="age" min="18" max="120" value="40" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="late30">Atrasos 30-59 días (últimos 2 años):</label>
+                    <input type="number" id="late30" min="0" max="20" value="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="debtRatio">Ratio de Deuda (0-1000):</label>
+                    <input type="number" id="debtRatio" step="0.01" min="0" max="1000" value="0.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="income">Ingreso Mensual ($):</label>
+                    <input type="number" id="income" step="100" min="0" max="1000000" value="5000" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="openLines">Líneas de crédito abiertas:</label>
+                    <input type="number" id="openLines" min="0" max="50" value="5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="late90">Atrasos 90+ días:</label>
+                    <input type="number" id="late90" min="0" max="20" value="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="realEstate">Préstamos inmobiliarios:</label>
+                    <input type="number" id="realEstate" min="0" max="20" value="1" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="late60">Atrasos 60-89 días (últimos 2 años):</label>
+                    <input type="number" id="late60" min="0" max="20" value="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="dependents">Número de dependientes:</label>
+                    <input type="number" id="dependents" min="0" max="20" value="0" required>
+                </div>
+
+                <button type="submit" class="btn-predict">🔍 Calcular Riesgo</button>
+            </form>
+        </div>
+
+        <div id="result" class="result-card hidden">
+            <h2>📊 Resultado del Análisis</h2>
+            <div class="result-content">
+                <div class="probability-display">
+                    <span class="prob-label">Probabilidad de Morosidad:</span>
+                    <span id="probability" class="prob-value">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div id="riskLevel" class="risk-badge">Riesgo Bajo</div>
+                <p id="recommendation" class="recommendation"></p>
+            </div>
+        </div>
+
+        <footer>
+            <p>🎓 Proyecto Final - Machine Learning 7º Semestre</p>
+            <p>Sistema de predicción basado en Random Forest (AUC-ROC: 0.8638)</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
